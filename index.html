@@ -1,1 +1,62 @@
-Hello world
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Farmers Ferry</title>
+
+	<script>
+		const ferryPrice = 25;
+		let bagsOfCorn = 0;
+
+		const displayFerryPrice = () => document.querySelector("#ferry-price").innerHTML = `£${(ferryPrice / 100).toFixed(2)}`;
+
+		const displayBagsOfCorn = () => document.querySelector("#bags-of-corn").innerHTML = bagsOfCorn;
+
+		const displayTotalPrice = () => document.querySelector("#total-price").innerHTML = `£${((ferryPrice * bagsOfCorn) / 100).toFixed(2)}`;
+
+		function onChangeQuantity(number) {
+			bagsOfCorn += number;
+			displayTotalPrice();
+		}
+
+		window.onload = function () {
+			displayFerryPrice();
+			displayBagsOfCorn();
+			displayTotalPrice();
+		};
+	</script>
+
+	<style>
+		*{
+			box-sizing: border-box;
+		}
+
+		html, body{
+			font-family: sans-serif;
+			padding: 0;
+			margin: 0;
+		}
+
+		body{
+			margin: auto;
+			width: auto;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div>
+		Ferry Price: <span id="ferry-price">--</span><br />
+		Bags of corn: <span id="bags-of-corn">--</span>
+	</div>
+
+	<button onclick="onChangeQuantity(1)">+</button>
+	<button onclick="onChangeQuantity(-1)">-</button>
+
+	<div>Total: <span id="total-price"></span></div>
+
+</body>
+
+</html>
